@@ -2,11 +2,6 @@
 
 ## Usage
 
-There are three different ways to create a modal.
-
-Define in inline template:
-
-```Usage
 front end
 terminal: npm run dev
 
