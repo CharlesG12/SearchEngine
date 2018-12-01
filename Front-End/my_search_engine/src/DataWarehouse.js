@@ -24,6 +24,9 @@ const dataWareHouse =  new Vuex.Store({
       { name: 'Doo-dad', url: '//placehold.it/200', snippet: "this is an example", displayUrl: "https://www.amazon.com/one-plus/s?page=1&rh=i:aps,k:one plus one" },
       { name: 'Other thing', url: '//placehold.it/200', snippet: "this is an example", displayUrl: "https://www.amazon.com/one-plus/s?page=1&rh=i:aps,k:one plus one" },
     ],
+    displaymine: [
+      { name: 'An Item', url: '//placehold.it/200', snippet: "this is an example", displayUrl: "https://www.amazon.com/one-plus/s?page=1&rh=i:aps,k:one plus one" },
+    ],
     query: "onePlus" ,
     query_expansion: [
       {name: 'oneplus',},
@@ -47,6 +50,7 @@ const dataWareHouse =  new Vuex.Store({
     my_param: state => state.myparam,
     query: state => state.query,
     currentpage: state => state.currentPage,
+    displaymine: state => state.displaymine,
   },
   mutations: {
     GOOGLE_SEARCH(state, result) { state.google = result },
@@ -64,11 +68,16 @@ const dataWareHouse =  new Vuex.Store({
     UPDATE_QUERY(state, result) { state.query = result },
     UPDATE_PAGE(state, result) { state.query = result},
     UPDATE_QUERY_EXPANSION(state, result) { state.query_expansion = result },
-    UPDATE_OFFSET(state, result) { state.search_offset = result }
+    UPDATE_OFFSET(state, result) { state.search_offset = result },
+    UPDATE_DISPLAYMINE(state, result) { state.displaymine = result }
   },
   actions: {
     update_query(context, query) {
       context.commit('UPDATE_QUERY', query)
+    },
+
+    update_displaymine(context, content) {
+      context.commit('UPDATE_DISPLAYMINE', content)
     },
 
     update_my_param(context, param) {
@@ -123,14 +132,14 @@ const dataWareHouse =  new Vuex.Store({
         console.log(hits);
         for( var i = 0; i < hits.length; i++ ){
           let item = {
-            name: "hit " + i, 
-            url: "", 
-            snippet: "no description", 
-            displayUrl: "hits[i].path"
-            // name: hits[i].title, 
-            // url: hits[i].url, 
-            // snippet: hits[i].path, 
-            // displayUrl: hits[i].url
+            // name: "hit " + i, 
+            // url: "", 
+            // snippet: "no description", 
+            // displayUrl: hits[i].path
+            name: "Rank " + i, 
+            url: hits[i].url, 
+            snippet: "path:" + hits[i].path, 
+            displayUrl: hits[i].url
           }
           result.push(item)
         }

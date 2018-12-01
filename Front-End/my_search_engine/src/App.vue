@@ -34,8 +34,8 @@
       <div class="col-md-8 resultBox">
         <h2>Bing Result</h2>
         <item 
-          v-for="item in bingResult"
-          :key="item.name"
+          v-for="(item, index) in bingResult"
+          :key=index
           :name="item.name"
           :url="item.url"
           :snippet="item.snippet"
@@ -43,9 +43,16 @@
       </div>
       <div class="col-md-8 resultBox">
         <h2>Our Result</h2>
+        <!-- <item 
+          v-for="i in 10"
+          :key=i
+          :name="myResult[i].name"
+          :url="myResult[i].url"
+          :snippet="myResult[i].snippet"
+          :display-url="myResult[i].displayUrl"/> -->
         <item 
-          v-for="item in myResult"
-          :key="item.name"
+          v-for="(item, index) in returnTop10"
+          :key=index
           :name="item.name"
           :url="item.url"
           :snippet="item.snippet"
@@ -69,13 +76,7 @@ export default {
   computed: {
     googleResult() { return this.$store.getters.googleResult; },
     bingResult() { return this.$store.getters.bingResult; },
-    // myResult() { 
-    //     let result = this.$store.getters.myResult;
-    //     let currentPage = this.$store.getters.currentPage;
-    //     let begin = 10 * (currentPage - 1)
-    //     let end = 10 * currentPage
-    //   return result.slice(begin, end) },
-    myResult() { return this.$store.getters.myResult; },
+    returnTop10(){ return this.$store.getters.displaymine; },
     queryResult() { return this.$store.getters.queryResult; },
     queryExpansionResult() { return this.$store.getters.queryExpansionResult; },
   },
