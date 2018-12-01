@@ -35,6 +35,7 @@ export default {
         updateCheck(check_value){
             let radio = this.$data.radio3
             let param = [{"pageRank": check_value}, {"method": radio}]
+            this.update(param)
         },
         my_search(){
             let params = this.$store.getters.my_param
