@@ -2,9 +2,10 @@
     <div>
         <at-checkbox label="pageranking" v-model="my_param" checked>PageRanking</at-checkbox>
         <at-radio-group v-model="radio3" class="check radio">
-            <at-radio label="Rochio">Rochio One</at-radio>
+            <at-radio label="Rochio">Rochio</at-radio>
             <at-radio label="Association">Association</at-radio>
             <at-radio label="Metric">Metric</at-radio>
+            <at-radio label="Scalar">Scalar</at-radio>
             <at-radio label="None">None</at-radio>
         </at-radio-group>
         <br>
